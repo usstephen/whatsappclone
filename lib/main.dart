@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'feature/welcome/pages/welcome_page.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -13,15 +15,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+      theme: ThemeData.dark(
         useMaterial3: true,
       ),
-      home: Scaffold(
-        body : Center(
-              child: Text('Demo page')
-        ),
-      )
+      home: WelcomePage()
     );
   }
 }
