@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:whatsappclone/Common/Theme/dark_theme.dart';
+import 'package:whatsappclone/Common/extension/custom_theme_extension.dart';
 
 import 'feature/welcome/pages/welcome_page.dart';
 
@@ -12,14 +15,24 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark(
-        useMaterial3: true,
+      theme: ThemeData(
+        extensions: <ThemeExtension>[
+          CustomThemeExtension.lightMode
+        ]
       ),
-      home: WelcomePage()
+        darkTheme: ThemeData(
+            extensions: <ThemeExtension>[
+              CustomThemeExtension.darkMode
+            ]
+        ),
+      themeMode: ThemeMode.system,
+      home: const WelcomePage()
     );
   }
 }
+
+
 
