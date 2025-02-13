@@ -13,6 +13,7 @@ class WelcomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       body: Center(
         child: Container(
@@ -21,16 +22,16 @@ class WelcomePage extends StatelessWidget {
             children: [
               Expanded(
                   child: Align(
-                alignment: Alignment.bottomCenter,
-                child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
-                  child: Image.asset(
-                    'assets/images/circle.png',
-                    color:Coloors.greenDark,
+                  alignment: Alignment.bottomCenter,
+                  child: Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
+                    child: Image.asset(
+                      'assets/images/circle.png',
+                      color:Coloors.greenDark,
+                    ),
                   ),
-                ),
-              )
+                )
               ),
               const SizedBox(
                 height: 40,
