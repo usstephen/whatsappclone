@@ -83,7 +83,7 @@ class _LoginPagesState extends State<LoginPages> {
               onTap: (){},
               controller: countryNameController,
               readOnly: true,
-              SuffixIcon:  const Icon(Icons.arrow_drop_down,
+              suffixIcon:  const Icon(Icons.arrow_drop_down,
                 color: Coloors.greenDark,
               ),
             ),
@@ -103,13 +103,13 @@ class _LoginPagesState extends State<LoginPages> {
 
                   ),
                 ),
-                const SizedBox(height: 10,)
+                const SizedBox(height: 10,),
                 Expanded(
                   child: CustomTextField(
                    controller:phoneNumberController,
                    hintText: 'phone number',
                     textAlign:TextAlign.left,
-                    keyBoardType:TextInputType.number,
+                    keyboardType :TextInputType.number,
 
 
                 ),

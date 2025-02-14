@@ -20,17 +20,17 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        extensions: <ThemeExtension>[
+        extensions: <ThemeExtension<dynamic>>[
           CustomThemeExtension.lightMode
         ]
       ),
         darkTheme: ThemeData(
-            extensions: <ThemeExtension>[
+            extensions: <ThemeExtension<dynamic>>[
               CustomThemeExtension.darkMode
             ]
         ),
       themeMode: ThemeMode.system,
-      home: const LoginPages()
+      home: LoginPages()
     );
   }
 }
