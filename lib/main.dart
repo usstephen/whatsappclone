@@ -4,6 +4,8 @@ import 'package:whatsappclone/Common/Theme/dark_theme.dart';
 import 'package:whatsappclone/Common/extension/custom_theme_extension.dart';
 import 'package:whatsappclone/feature/auth/Pages/login_pages.dart';
 
+import 'Common/Theme/light_theme.dart';
+
 
 
 void main() {
@@ -19,16 +21,8 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        extensions: <ThemeExtension<dynamic>>[
-          CustomThemeExtension.lightMode
-        ]
-      ),
-        darkTheme: ThemeData(
-            extensions: <ThemeExtension<dynamic>>[
-              CustomThemeExtension.darkMode
-            ]
-        ),
+      theme: lightTheme(),
+      darkTheme: darkTheme(),
       themeMode: ThemeMode.system,
       home: LoginPages()
     );

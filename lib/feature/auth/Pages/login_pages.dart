@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_utils/src/extensions/context_extensions.dart';
 import 'package:whatsappclone/Common/Utils/Coloors.dart';
 import 'package:whatsappclone/Common/Utils/widgets/custom_elevated_button/custom_elevated_button.dart';
+import 'package:whatsappclone/Common/extension/custom_theme_extension.dart';
 
 import '../widgets/custom_text-field.dart';
 
@@ -46,6 +47,7 @@ class _LoginPagesState extends State<LoginPages> {
               splashRadius: 22,
               iconSize: 22,
               padding: EdgeInsets.zero,
+              color: context.customTheme.langBtnBgColor,
               constraints: const BoxConstraints(minWidth: 40),
               icon: Icon(Icons.more_vert, color: Coloors.blueLight,)
           )

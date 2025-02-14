@@ -11,7 +11,7 @@ class CustomTextField extends StatelessWidget {
   final String? prefixText;
   final VoidCallback? onTap;
   final Widget? suffixIcon;
-  final  Function (String)? onChanged;
+  final Function (String)? onChanged;
 
   const CustomTextField({
     this.controller,
@@ -20,7 +20,6 @@ class CustomTextField extends StatelessWidget {
     this.prefixText, this.onTap,
     this.suffixIcon, this.onChanged,
   });
-  
 
 
   @override
@@ -28,23 +27,23 @@ class CustomTextField extends StatelessWidget {
     return TextFormField(
       onTap: onTap,
       controller: controller,
-      readOnly: readOnly?? false,
+      readOnly: readOnly ?? false,
       textAlign: TextAlign.center,
-      keyboardType: readOnly == null?keyboardType: null,
+      keyboardType: readOnly == null ? keyboardType : null,
       onChanged: onChanged,
-      decoration:InputDecoration(
+      decoration: InputDecoration(
         isDense: true,
         prefixText: prefixText,
         suffix: suffixIcon,
         hintText: hintText,
         hintStyle: TextStyle(color: Coloors.greyLight),
-        enabledBorder:  const UnderlineInputBorder(
+        enabledBorder: const UnderlineInputBorder(
           borderSide: BorderSide(color: Coloors.greenDark),
         ),
-    focusedBorder:  const UnderlineInputBorder(
-    borderSide: BorderSide(color: Coloors.greenDark, width: 2),
+        focusedBorder: const UnderlineInputBorder(
+          borderSide: BorderSide(color: Coloors.greenDark, width: 2),
+        ),
       ),
-    ),
-      );
+    );
   }
 }

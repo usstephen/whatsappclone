@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:whatsappclone/Common/Utils/Coloors.dart';
 import 'package:whatsappclone/Common/extension/custom_theme_extension.dart';
 
-ThemeData dark_theme(){
+ThemeData darkTheme(){
   final ThemeData base = ThemeData.dark();
   return base.copyWith(
     dialogBackgroundColor: Coloors.backgroundDark,

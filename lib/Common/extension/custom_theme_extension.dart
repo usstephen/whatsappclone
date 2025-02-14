@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:whatsappclone/Common/Utils/Coloors.dart';
 
 extension ExtendedTheme on BuildContext{
-  CustomThemeExtension get theme {
+  CustomThemeExtension get customTheme {
     return Theme.of(this).extension<CustomThemeExtension>()!;
   }
 }

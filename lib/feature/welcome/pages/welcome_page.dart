@@ -15,6 +15,7 @@ class WelcomePage extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Scaffold(
+
       body: Center(
         child: Container(
           width: 450,
@@ -28,7 +29,7 @@ class WelcomePage extends StatelessWidget {
                         const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
                     child: Image.asset(
                       'assets/images/circle.png',
-                      color:Coloors.greenDark,
+                      color:context.customTheme.circleImageColor,
                     ),
                   ),
                 )

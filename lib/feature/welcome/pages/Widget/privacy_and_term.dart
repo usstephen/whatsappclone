@@ -20,7 +20,7 @@ class  PrivacyAndTerm extends StatelessWidget {
       TextSpan(
           text: 'Read our ',
           style: TextStyle(
-            color: context.theme.greyColor,
+            color: context.customTheme.greyColor,
             height: 1.5,
           ),
           children: [
@@ -29,21 +29,21 @@ class  PrivacyAndTerm extends StatelessWidget {
                   onTap: (){},
                   child: Text(
                       'Privacy Policy ',
-                      style: TextStyle(color: context.theme.blueColor)
+                      style: TextStyle(color: context.customTheme.blueColor)
                   ),
                 ),
             ),
             TextSpan(
                 text:
                 'Tap "Agree and Continue" to accept the ',
-              style: TextStyle(color: context.theme.greyColor)
+              style: TextStyle(color: context.customTheme.greyColor)
             ),
             WidgetSpan(
               child: InkWell(
                 onTap: (){},
                 child: Text(
                     'Term Of Service. ',
-                    style: TextStyle(color: context.theme.blueColor)
+                    style: TextStyle(color: context.customTheme.blueColor)
                 ),
               ),
 

@@ -5,7 +5,7 @@ import 'package:whatsappclone/Common/extension/custom_theme_extension.dart';
 
 import '../Utils/Coloors.dart';
 
-ThemeData Light_theme(){
+ThemeData lightTheme(){
   final ThemeData base = ThemeData.light();
   return base.copyWith(
     dialogBackgroundColor: Coloors.backgroundLight,
