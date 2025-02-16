@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_utils/src/extensions/context_extensions.dart';
 import 'package:whatsappclone/Common/Utils/Coloors.dart';
 import 'package:whatsappclone/Common/Utils/widgets/custom_elevated_button/custom_elevated_button.dart';
+import 'package:whatsappclone/Common/extension/custom_theme_extension.dart';
 
 import '../widgets/custom_text-field.dart';
 
@@ -16,13 +17,16 @@ class _LoginPagesState extends State<LoginPages> {
   late TextEditingController countryNameController;
   late TextEditingController countryCodeController;
   late TextEditingController phoneNumberController;
+
   @override
   void initState() {
-    countryNameController= TextEditingController(text: 'Ethiopia');
-    countryCodeController = TextEditingController(text: '251)');
+    countryNameController = TextEditingController(text: 'Ethiopia');
+    countryCodeController = TextEditingController(text: '251');
     phoneNumberController = TextEditingController();
     super.initState();
   }
+
+
   @override
   void dispose() {
     countryCodeController.dispose();
@@ -36,12 +40,14 @@ class _LoginPagesState extends State<LoginPages> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         elevation: 0,
-        title: Text('Enter Your Phone Number',style: TextStyle(color: Color(0xFFE9EDEF),
-        ),
+        title: Text(
+            'Enter Your Phone Number',style: TextStyle(color: Color(0xFFE9EDEF),
+          ),
         ),
           centerTitle: true,
         actions: [
-          IconButton(onPressed: (){},
+          IconButton(
+              onPressed: (){},
               splashColor: Colors.transparent,
               splashRadius: 22,
               iconSize: 22,
@@ -69,7 +75,7 @@ class _LoginPagesState extends State<LoginPages> {
                 TextSpan(
                   text: "what is my number?",
                   style: TextStyle(
-                    color: context.theme.primaryColorDark,
+                    color: context.customTheme.blueColor,
                   )
                 )
               ]
@@ -83,7 +89,7 @@ class _LoginPagesState extends State<LoginPages> {
               onTap: (){},
               controller: countryNameController,
               readOnly: true,
-              SuffixIcon:  const Icon(Icons.arrow_drop_down,
+              suffixActIcon:  const Icon(Icons.arrow_drop_down,
                 color: Coloors.greenDark,
               ),
             ),
@@ -103,16 +109,14 @@ class _LoginPagesState extends State<LoginPages> {
 
                   ),
                 ),
-                const SizedBox(height: 10,)
+                const SizedBox(height: 10,),
                 Expanded(
                   child: CustomTextField(
                    controller:phoneNumberController,
                    hintText: 'phone number',
                     textAlign:TextAlign.left,
-                    keyBoardType:TextInputType.number,
-
-
-                ),
+                    keyboardType:TextInputType.number,
+                  ),
                 ),
               ],
             ),

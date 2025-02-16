@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:whatsappclone/Common/Utils/Coloors.dart';
 
 extension ExtendedTheme on BuildContext{
-  CustomThemeExtension get theme {
+  CustomThemeExtension get customTheme {
     return Theme.of(this).extension<CustomThemeExtension>()!;
   }
 }
@@ -15,7 +15,6 @@ class CustomThemeExtension extends ThemeExtension<CustomThemeExtension>{
     langBtnBgColor: Color(0xFFF7F8FA),
     langBtnHighlightColor: Color(0xFFE8E8ED),
     authAppbarTextColor: Coloors.greyLight,
-
   );
 
   static const darkMode = CustomThemeExtension(

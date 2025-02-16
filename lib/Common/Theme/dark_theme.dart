@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:whatsappclone/Common/Utils/Coloors.dart';
 import 'package:whatsappclone/Common/extension/custom_theme_extension.dart';
 
-ThemeData dark_theme(){
+ThemeData darkTheme(){
   final ThemeData base = ThemeData.dark();
   return base.copyWith(
     dialogBackgroundColor: Coloors.backgroundDark,
@@ -15,10 +15,8 @@ ThemeData dark_theme(){
       systemOverlayStyle: SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,
         statusBarBrightness: Brightness.dark,
-
       )
     ),
-
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         backgroundColor: Coloors.greenDark,
@@ -33,9 +31,9 @@ ThemeData dark_theme(){
       modalBackgroundColor: Coloors.greyBackground,
       shape: RoundedRectangleBorder
         (borderRadius:
-      BorderRadius.vertical
-        (top: Radius.circular(20)
-      )
+        BorderRadius.vertical
+          (top: Radius.circular(20)
+        )
       )
     ),
 

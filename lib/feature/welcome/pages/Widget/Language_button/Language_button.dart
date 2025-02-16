@@ -17,7 +17,7 @@ showButtonSheet(context){
             height: 4,
               width: 30,
             decoration: BoxDecoration(
-              color: context.theme.greyColor!.withOpacity(0.4),
+              color: context.customTheme.greyColor!.withOpacity(0.4),
               borderRadius: BorderRadius.circular(5),
             ),
 
@@ -50,7 +50,7 @@ showButtonSheet(context){
 
           ),
           const SizedBox(height: 10),
-          Divider( color: context.theme.greyColor!.withOpacity(0.3),
+          Divider( color: context.customTheme.greyColor!.withOpacity(0.3),
             thickness: .5,
           ),
           RadioListTile(
@@ -61,7 +61,7 @@ showButtonSheet(context){
             title: const Text('English'),
             subtitle: Text("Phone's Language",
               style:TextStyle(
-                color: context.theme.greyColor,
+                color: context.customTheme.greyColor,
               ) ,
             ),
           ),
@@ -73,7 +73,7 @@ showButtonSheet(context){
             title: const Text('amˈharɪk'),
             subtitle: Text('Amharic',
               style:TextStyle(
-                color: context.theme.greyColor,
+                color: context.customTheme.greyColor,
 
               ) ,
             ),
@@ -90,13 +90,13 @@ showButtonSheet(context){
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: context.theme.langBtnBgColor,
+      color: context.customTheme.langBtnBgColor,
       borderRadius: BorderRadius.circular(20),
       child: InkWell(
       onTap: ()=> showButtonSheet(context) ,
         borderRadius: BorderRadius.circular(20),
         splashFactory: NoSplash.splashFactory,
-        highlightColor: context.theme.langBtnHighlightColor,
+        highlightColor: context.customTheme.langBtnHighlightColor,
         child: Padding(
             padding:
             EdgeInsets.symmetric(

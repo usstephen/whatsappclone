@@ -3,21 +3,23 @@ import 'package:get/get.dart';
 import 'package:whatsappclone/Common/Utils/Coloors.dart';
 
 class CustomTextField extends StatelessWidget {
-  const CustomTextField(this.controller,
-      this.hintText, this.readOnly,
-      this.textAlign, this.KeyboardType,
-      this.prefixText, this.onTap,
-      this.suffixActIcon, this.onChanged,
-      );
   final TextEditingController? controller;
   final String? hintText;
   final bool? readOnly;
   final TextAlign? textAlign;
-  final TextInputType? KeyboardType;
+  final TextInputType? keyboardType;
   final String? prefixText;
   final VoidCallback? onTap;
   final Widget? suffixActIcon;
   final  Function (String)? onChanged;
+
+  const CustomTextField({
+    this.controller,
+    this.hintText, this.readOnly,
+    this.textAlign, this.keyboardType,
+    this.prefixText, this.onTap,
+    this.suffixActIcon, this.onChanged,
+  });
 
 
   @override
@@ -27,7 +29,7 @@ class CustomTextField extends StatelessWidget {
       controller: controller,
       readOnly: readOnly?? false,
       textAlign: TextAlign.center,
-      keyboardType: readOnly == null?KeyboardType: null,
+      keyboardType: readOnly == null?keyboardType: null,
       onChanged: onChanged,
       decoration:InputDecoration(
         isDense: true,
@@ -38,10 +40,10 @@ class CustomTextField extends StatelessWidget {
         enabledBorder:  const UnderlineInputBorder(
           borderSide: BorderSide(color: Coloors.greenDark),
         ),
-    focusedBorder:  const UnderlineInputBorder(
-    borderSide: BorderSide(color: Coloors.greenDark, width: 2),
-      ),
-    ),
+        focusedBorder:  const UnderlineInputBorder(
+        borderSide: BorderSide(color: Coloors.greenDark, width: 2),
+          ),
+        ),
       );
   }
 }
