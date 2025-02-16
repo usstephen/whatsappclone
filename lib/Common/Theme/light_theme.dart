@@ -8,12 +8,13 @@ import '../Utils/Coloors.dart';
 ThemeData lightTheme(){
   final ThemeData base = ThemeData.light();
   return base.copyWith(
-    dialogBackgroundColor: Coloors.backgroundLight,
+
     scaffoldBackgroundColor: Coloors.backgroundLight,
     extensions: [
       CustomThemeExtension.lightMode
     ],
     appBarTheme: AppBarTheme(
+        titleTextStyle: TextStyle(fontSize: 18),
         systemOverlayStyle: SystemUiOverlayStyle(
           statusBarColor: Colors.transparent,
           statusBarBrightness: Brightness.light,
@@ -38,5 +39,12 @@ ThemeData lightTheme(){
         )
         )
     ),
+      dialogBackgroundColor: Coloors.backgroundLight,
+      dialogTheme: DialogTheme(
+      shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(10),
+  )
+      )
+
   );
 }

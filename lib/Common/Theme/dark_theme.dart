@@ -6,12 +6,13 @@ import 'package:whatsappclone/Common/extension/custom_theme_extension.dart';
 ThemeData darkTheme(){
   final ThemeData base = ThemeData.dark();
   return base.copyWith(
-    dialogBackgroundColor: Coloors.backgroundDark,
+
     scaffoldBackgroundColor: Coloors.backgroundDark,
     extensions: [
       CustomThemeExtension.darkMode
     ],
     appBarTheme: AppBarTheme(
+      titleTextStyle: TextStyle(fontSize: 18),
       systemOverlayStyle: SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,
         statusBarBrightness: Brightness.dark,
@@ -36,6 +37,12 @@ ThemeData darkTheme(){
         )
       )
     ),
+    dialogBackgroundColor: Coloors.greyBackground,
+    dialogTheme: DialogTheme(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
 
+    ),
+    ),
   );
 }

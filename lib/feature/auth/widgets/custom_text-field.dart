@@ -12,6 +12,17 @@ class CustomTextField extends StatelessWidget {
   final VoidCallback? onTap;
   final Widget? suffixActIcon;
   final  Function (String)? onChanged;
+  final double? fontSize;
+  final bool? autoFocus;
+
+  const CustomTextField({
+    this.controller,
+    this.hintText, this.readOnly,
+    this.textAlign, this.keyboardType,
+    this.prefixText, this.onTap,
+    this.suffixActIcon, this.onChanged, this.fontSize, this.autoFocus,
+
+  });
 
   const CustomTextField({
     this.controller,
@@ -31,6 +42,8 @@ class CustomTextField extends StatelessWidget {
       textAlign: TextAlign.center,
       keyboardType: readOnly == null?keyboardType: null,
       onChanged: onChanged,
+      style: TextStyle(fontSize: fontSize),
+      autofocus: autoFocus?? false,
       decoration:InputDecoration(
         isDense: true,
         prefixText: prefixText,
