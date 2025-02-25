@@ -4,6 +4,7 @@ import 'package:whatsappclone/Common/Theme/dark_theme.dart';
 import 'package:whatsappclone/Common/Theme/light_theme.dart';
 import 'package:whatsappclone/feature/auth/Pages/login_pages.dart';
 import 'package:country_picker/country_picker.dart';
+import 'package:whatsappclone/feature/auth/Pages/user_infor_page.dart';
 import 'package:whatsappclone/feature/auth/Pages/verification_page.dart';
 
 void main() {
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
       theme: lightTheme(),
       darkTheme: darkTheme(),
       themeMode: ThemeMode.system,
-      home: const VerificationPage()
+      home: const UserInforPage()
     );
   }
 }

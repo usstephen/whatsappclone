@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+
 import 'package:whatsappclone/Common/Utils/Coloors.dart';
 
 class CustomTextField extends StatelessWidget {
@@ -15,6 +15,7 @@ class CustomTextField extends StatelessWidget {
   final double? fontSize;
   final bool? autoFocus;
 
+
   const CustomTextField({
     this.controller,
     this.hintText, this.readOnly,
@@ -24,14 +25,13 @@ class CustomTextField extends StatelessWidget {
 
   });
 
-  const CustomTextField({
+  /*const CustomTextField({
     this.controller,
     this.hintText, this.readOnly,
     this.textAlign, this.keyboardType,
     this.prefixText, this.onTap,
-    this.suffixActIcon, this.onChanged,
-  });
-
+    this.suffixActIcon, this.onChanged, this.fontSize, this.autoFocus,
+  });*/
 
   @override
   Widget build(BuildContext context) {
