@@ -11,6 +11,8 @@ import 'Widget/Language_button/Language_button.dart';
 class WelcomePage extends StatelessWidget {
   const WelcomePage({super.key});
 
+
+
   @override
   Widget build(BuildContext context) {
 
@@ -50,7 +52,7 @@ class WelcomePage extends StatelessWidget {
                   ),
                   PrivacyAndTerm(),
                   CustomElevatedButton(
-                      onPressed: (){},
+                      onPressed: () {},
                       buttonWidth: 400,
                       text: "Agree and Continue"
                   ),

@@ -5,9 +5,12 @@ import 'package:whatsappclone/Common/extension/custom_theme_extension.dart';
 import 'package:whatsappclone/feature/auth/widgets/custom_text-field.dart';
 
 import '../../../Common/Utils/widgets/custom_icon_button.dart';
+import 'package:whatsappclone/feature/welcome/pages/Widget/app_routes.dart';
+
 
 class VerificationPage extends StatefulWidget {
-  const VerificationPage({super.key});
+  const VerificationPage({super.key,});
+
 
   @override
   State<VerificationPage> createState() => _VerificationPageState();
@@ -111,7 +114,7 @@ class _VerificationPageState extends State<VerificationPage> {
               ],
             ),
 
-            const SizedBox(height: 10),
+            const SizedBox(height: 30),
             Divider(color: context.customTheme.blueColor!.withOpacity(0.2),
             ),
             Row(
