@@ -5,7 +5,8 @@ import 'package:whatsappclone/Common/extension/custom_theme_extension.dart';
 import 'package:whatsappclone/feature/auth/Pages/login_pages.dart';
 
 import 'Common/Theme/light_theme.dart';
-
+import 'Common/routes/app_routes.dart';
+import 'feature/welcome/pages/welcome_page.dart';
 
 
 void main() {
@@ -15,7 +16,7 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
@@ -24,7 +25,14 @@ class MyApp extends StatelessWidget {
       theme: lightTheme(),
       darkTheme: darkTheme(),
       themeMode: ThemeMode.system,
-      home: LoginPages()
+      initialRoute: AppRoutes.initial,
+      getPages: AppRoutes.pages,
+      unknownRoute: GetPage(
+        name: '/not-found',
+        page: () => const Scaffold(
+          body: Center(child: Text('No route defined')),
+        ),
+      ),
     );
   }
 }

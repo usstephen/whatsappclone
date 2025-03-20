@@ -6,6 +6,7 @@ class CustomTextField extends StatelessWidget {
   final TextEditingController? controller;
   final String? hintText;
   final bool? readOnly;
+  final bool obscured;
   final TextAlign? textAlign;
   final TextInputType? keyboardType;
   final String? prefixText;
@@ -19,6 +20,7 @@ class CustomTextField extends StatelessWidget {
     this.textAlign, this.keyboardType,
     this.prefixText, this.onTap,
     this.suffixIcon, this.onChanged,
+    this.obscured = false
   });
 
 
@@ -28,6 +30,7 @@ class CustomTextField extends StatelessWidget {
       onTap: onTap,
       controller: controller,
       readOnly: readOnly ?? false,
+      obscureText: obscured,
       textAlign: TextAlign.center,
       keyboardType: readOnly == null ? keyboardType : null,
       onChanged: onChanged,

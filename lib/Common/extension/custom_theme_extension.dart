@@ -15,7 +15,6 @@ class CustomThemeExtension extends ThemeExtension<CustomThemeExtension>{
     langBtnBgColor: Color(0xFFF7F8FA),
     langBtnHighlightColor: Color(0xFFE8E8ED),
     authAppbarTextColor: Coloors.greyLight,
-
   );
 
   static const darkMode = CustomThemeExtension(
