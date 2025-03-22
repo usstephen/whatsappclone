@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hive/hive.dart';
 import 'package:whatsappclone/Common/Utils/Coloors.dart';
 import 'package:uuid/uuid.dart';
 import 'package:whatsappclone/feature/home/home_screen.dart';
+import 'package:whatsappclone/model/user.dart';
 
 import '../../../Common/Utils/widgets/custom_elevated_button/custom_elevated_button.dart';
 import '../../../resouces/services.dart';
@@ -69,7 +71,6 @@ class _SignupState extends State<Signup> {
               SizedBox(height: 10,),
               Stack(
                 children: [
-
                   CircleAvatar(
                     radius: 40,
                     backgroundColor: Coloors.greyDark,
@@ -144,17 +145,21 @@ class _SignupState extends State<Signup> {
     String uid = "";
     Uuid uuid = Uuid();
     uid = uuid.v1();
-    final response = await Services.registerUser(
-      uid: uid,
-      username: _username.text,
-      first: _first.text,
-      last: _last.text,
-      email: _email.text,
-      phone: widget.phone,
-      password: _password.text,
+    var box = Hive.box<UserModel>("user");
+    UserModel userModel = UserModel(
+        uid: uid,
+        username: _username.text,
+        first: _first.text,
+        last: _last.text,
+        email: _email.text,
+        phone: widget.phone,
+        password: _password.text,
+        time: ""
     );
+    final response = await Services.registerUser(user: userModel);
 
-    if (response['status']=="success") {
+    if (response['status']=="success"){
+      box.put("current", userModel);
       Get.offAll(() => HomeScreen(), transition: Transition.rightToLeft);
       Get.snackbar("Success", response['message']);
     } else {
