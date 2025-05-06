@@ -6,7 +6,8 @@ import 'package:whatsappclone/main.dart';
 import '../../feature/auth/Pages/login_pages.dart';
 
 class AppRoutes{
-  static String initial = currentUser.uid.isEmpty? '/' : '/home';
+  static String initial = currentUser?.uid.isEmpty ?? true ? '/login' : '/home';
+
 
   static final List<GetPage> pages= [
     GetPage(name: '/', page: () => const WelcomePage()),

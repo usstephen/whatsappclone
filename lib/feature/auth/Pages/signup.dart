@@ -1,22 +1,20 @@
-import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:uuid/uuid.dart';
 import 'package:whatsappclone/Common/Utils/Coloors.dart';
+import 'package:uuid/uuid.dart';
 import 'package:whatsappclone/feature/home/home_screen.dart';
 import 'package:whatsappclone/model/user.dart';
 
 import '../../../Common/Utils/widgets/custom_elevated_button/custom_elevated_button.dart';
 import '../../../resouces/services.dart';
 import '../widgets/custom_text-field.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+
 
 class Signup extends StatefulWidget {
-  final String phone;
-
+  String phone;
   Signup({super.key, required this.phone});
 
   @override
@@ -30,10 +28,10 @@ class _SignupState extends State<Signup> {
   late TextEditingController _email;
   late TextEditingController _password;
   late TextEditingController _confirm;
-  File? _image;
 
   @override
   void initState() {
+    // TODO: implement initState
     super.initState();
     _username = TextEditingController();
     _first = TextEditingController();
@@ -45,101 +43,94 @@ class _SignupState extends State<Signup> {
 
   @override
   void dispose() {
+    // TODO: implement dispose
+    super.dispose();
     _username.dispose();
     _first.dispose();
     _last.dispose();
     _email.dispose();
     _password.dispose();
     _confirm.dispose();
-    super.dispose();
-  }
-
-  Future<void> _pickImage() async {
-    final picked = await ImagePicker().pickImage(source: ImageSource.gallery);
-    if (picked != null) {
-      setState(() {
-        _image = File(picked.path);
-      });
-    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Profile"),
+        title: Text("Profile"),
         centerTitle: true,
       ),
       body: Center(
-        child: SingleChildScrollView(
-          child: Container(
-            width: 450,
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              children: [
-                const SizedBox(height: 30),
-                const Text(
-                  "Please enter your user details below.",
-                  style: TextStyle(color: Colors.blueGrey),
-                ),
-                const SizedBox(height: 10),
-                Stack(
-                  children: [
-                    CircleAvatar(
-                      radius: 40,
-                      backgroundColor: Coloors.greyDark,
-                      backgroundImage: _image != null ? FileImage(_image!) : null,
-                      child: _image == null
-                          ? const Icon(CupertinoIcons.person, color: Colors.white)
-                          : null,
-                    ),
-                    Positioned(
+        child: Container(
+          width: 450,
+          child: Column(
+            children: [
+              SizedBox(height: 30,),
+              Text(
+                "Please enter your user details below.",
+                style: TextStyle(color: Colors.blueGrey),
+              ),
+              SizedBox(height: 10,),
+              Stack(
+                children: [
+                  CircleAvatar(
+                    radius: 40,
+                    backgroundColor: Coloors.greyDark,
+                    child: Icon(CupertinoIcons.person, color: Colors.white,),
+                  ),
+                  Positioned(
                       bottom: -5,
                       right: -9,
                       child: IconButton(
-                        onPressed: _pickImage,
-                        icon: const Icon(Icons.add_a_photo),
+                          onPressed: (){},
+                          icon: Icon(Icons.add_a_photo),
                         color: Coloors.greenDark,
-                      ),
+                      )
+                  ),
+                ],
+              ),
+              SizedBox(height: 20,),
+              CustomTextField(
+                hintText: "Username",
+                controller: _username,
+              ),
+              SizedBox(height: 20,),
+              Row(
+                children: [
+                  Expanded(
+                    child: CustomTextField(
+                      hintText: "First Name",
+                      controller: _first,
                     ),
-                  ],
-                ),
-                const SizedBox(height: 20),
-                CustomTextField(hintText: "Username", controller: _username),
-                const SizedBox(height: 20),
-                Row(
-                  children: [
-                    Expanded(
-                      child: CustomTextField(
-                          hintText: "First Name", controller: _first),
+                  ),
+                  SizedBox(width: 10,),
+                  Expanded(
+                    child: CustomTextField(
+                      hintText: "Last Name",
+                      controller: _last,
                     ),
-                    const SizedBox(width: 10),
-                    Expanded(
-                      child: CustomTextField(
-                          hintText: "Last Name", controller: _last),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 20),
-                CustomTextField(
-                  hintText: "Email Address",
-                  keyboardType: TextInputType.emailAddress,
-                  controller: _email,
-                ),
-                const SizedBox(height: 20),
-                CustomTextField(
-                  hintText: "Password",
-                  obscured: true,
-                  controller: _password,
-                ),
-                const SizedBox(height: 20),
-                CustomTextField(
-                  hintText: "Confirm Password",
-                  obscured: true,
-                  controller: _confirm,
-                ),
-              ],
-            ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 20,),
+              CustomTextField(
+                hintText: "Email Address",
+                keyboardType: TextInputType.emailAddress,
+                controller: _email,
+              ),
+              SizedBox(height: 20,),
+              CustomTextField(
+                hintText: "Password",
+                obscured: true,
+                controller: _password,
+              ),
+              SizedBox(height: 20,),
+              CustomTextField(
+                hintText: "Confirm Password",
+                obscured: true,
+                controller: _confirm,
+              ),
+            ],
           ),
         ),
       ),
@@ -152,40 +143,24 @@ class _SignupState extends State<Signup> {
     );
   }
 
-  void _registerUser() async {
-    // Form validation
-    if (_username.text.isEmpty ||
-        _first.text.isEmpty ||
-        _last.text.isEmpty ||
-        _email.text.isEmpty ||
-        _password.text.isEmpty ||
-        _confirm.text.isEmpty) {
-      Get.snackbar("Error", "Please fill in all fields.");
-      return;
-    }
-
-    if (_password.text != _confirm.text) {
-      Get.snackbar("Error", "Passwords do not match.");
-      return;
-    }
-
-    String uid = const Uuid().v1();
+  void _registerUser()async{
+    String uid = "";
+    Uuid uuid = Uuid();
+    uid = uuid.v1();
     var box = Hive.box<UserModel>("user");
-
     UserModel userModel = UserModel(
-      uid: uid,
-      username: _username.text.trim(),
-      first: _first.text.trim(),
-      last: _last.text.trim(),
-      email: _email.text.trim(),
-      phone: widget.phone,
-      password: _password.text,
-      time: DateTime.now().toIso8601String(),
+        uid: uid,
+        username: _username.text,
+        first: _first.text,
+        last: _last.text,
+        email: _email.text,
+        phone: widget.phone,
+        password: _password.text,
+        time: ""
     );
-
     final response = await Services.registerUser(user: userModel);
 
-    if (response['status'] == "success") {
+    if (response['status']=="success"){
       box.put("current", userModel);
       Get.offAll(() => HomeScreen(), transition: Transition.rightToLeft);
       Get.snackbar("Success", response['message']);
