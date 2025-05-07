@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:whatsappclone/Common/Utils/Coloors.dart';
 import 'package:whatsappclone/Common/Utils/widgets/custom_elevated_button/custom_elevated_button.dart';
+import 'package:whatsappclone/feature/auth/Pages/login_pages.dart';
 import 'package:whatsappclone/feature/welcome/pages/Widget/privacy_and_term.dart';
 import 'package:whatsappclone/Common/extension/custom_theme_extension.dart';
 
@@ -15,6 +16,7 @@ class WelcomePage extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Scaffold(
+
       body: Center(
         child: Container(
           width: 450,
@@ -28,7 +30,7 @@ class WelcomePage extends StatelessWidget {
                         const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
                     child: Image.asset(
                       'assets/images/circle.png',
-                      color:Coloors.greenDark,
+                      color:context.customTheme.circleImageColor,
                     ),
                   ),
                 )
@@ -50,7 +52,9 @@ class WelcomePage extends StatelessWidget {
                   ),
                   PrivacyAndTerm(),
                   CustomElevatedButton(
-                      onPressed: (){},
+                      onPressed: (){
+                        Get.to(() => LoginPages(), transition: Transition.rightToLeft);
+                      },
                       buttonWidth: 400,
                       text: "Agree and Continue"
                   ),
