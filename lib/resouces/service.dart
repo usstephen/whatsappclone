@@ -1,9 +1,12 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:whatsappclone/model/user.dart';
+import 'package:whatsappclone/data/model/user/user.dart';
+import 'package:image_picker/image_picker.dart';
+
+
 
 class Services {
-  static const String HOST = "http://localhost:3000/";
+  static const String HOST = "http://localhost:5000/";
 
   static const String register = HOST + "register";
 

@@ -1,12 +1,14 @@
 import 'package:country_picker/country_picker.dart';
 import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_utils/src/extensions/context_extensions.dart';
 import 'package:whatsappclone/Common/Utils/Coloors.dart';
 import 'package:whatsappclone/Common/Utils/widgets/custom_elevated_button/custom_elevated_button.dart';
 import 'package:whatsappclone/Common/Utils/widgets/custom_icon_button.dart';
 import 'package:whatsappclone/Common/extension/custom_theme_extension.dart';
 import 'package:whatsappclone/Common/helper/show_alert_dialog.dart';
+import 'package:whatsappclone/feature/auth/Pages/signup.dart';
 import 'package:whatsappclone/feature/welcome/pages/Widget/app_routes.dart';
 
 
@@ -197,7 +199,9 @@ class _LoginPagesState extends State<LoginPages> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: CustomElevatedButton(
-        onPressed: sendCodeToPhone,
+        onPressed: (){
+          Get.to(() => Signup(phone: "+${countryCodeController.text}${phoneNumberController.text}"));
+        },
           text:
           'Next',
         buttonWidth: 90,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'package:whatsappclone/model/user.dart';
+import 'package:whatsappclone/data/model/user/user.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

@@ -6,18 +6,22 @@ import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:uuid/uuid.dart';
+
 import 'package:whatsappclone/Common/Utils/Coloors.dart';
+import 'package:whatsappclone/data/model/response/response.dart';
+import 'package:whatsappclone/data/services/user/user_service.dart';
 import 'package:whatsappclone/feature/home/home_screen.dart';
-import 'package:whatsappclone/model/user.dart';
+import 'package:whatsappclone/data/model/user/user.dart';
+
 
 import '../../../Common/Utils/widgets/custom_elevated_button/custom_elevated_button.dart';
-import '../../../resouces/services.dart';
+import '../../../resouces/service.dart';
 import '../widgets/custom_text-field.dart';
 
 class Signup extends StatefulWidget {
   final String phone;
 
-  Signup({super.key, required this.phone});
+  const Signup({super.key, required this.phone});
 
   @override
   State<Signup> createState() => _SignupState();
@@ -129,13 +133,13 @@ class _SignupState extends State<Signup> {
                 const SizedBox(height: 20),
                 CustomTextField(
                   hintText: "Password",
-                  obscured: true,
+                  obscureText: true,
                   controller: _password,
                 ),
                 const SizedBox(height: 20),
                 CustomTextField(
                   hintText: "Confirm Password",
-                  obscured: true,
+                  obscureText: true,
                   controller: _confirm,
                 ),
               ],
@@ -153,7 +157,6 @@ class _SignupState extends State<Signup> {
   }
 
   void _registerUser() async {
-    // Form validation
     if (_username.text.isEmpty ||
         _first.text.isEmpty ||
         _last.text.isEmpty ||
@@ -169,11 +172,8 @@ class _SignupState extends State<Signup> {
       return;
     }
 
-    String uid = const Uuid().v1();
-    var box = Hive.box<UserModel>("user");
-
-    UserModel userModel = UserModel(
-      uid: uid,
+    UserModel _user = UserModel(
+      uid: '',
       username: _username.text.trim(),
       first: _first.text.trim(),
       last: _last.text.trim(),
@@ -183,14 +183,12 @@ class _SignupState extends State<Signup> {
       time: DateTime.now().toIso8601String(),
     );
 
-    final response = await Services.registerUser(user: userModel);
-
-    if (response['status'] == "success") {
-      box.put("current", userModel);
-      Get.offAll(() => HomeScreen(), transition: Transition.rightToLeft);
-      Get.snackbar("Success", response['message']);
+    final ApiResponse response = await UserService.registerUser(_user);
+    print('Response:${response.toJson()}');
+    if(response.success == true){
+      Get.snackbar("Success", "User created successfully");
     } else {
-      Get.snackbar("Error", response['message']);
+      Get.snackbar("Error", response.message!);
     }
   }
 }
